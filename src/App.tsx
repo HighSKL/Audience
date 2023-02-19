@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
+import StartPage from './Components/StartPage/StartPage';
 
 const App: React.FC = () => {
   return (
-    <div className="wrapper"></div>
+    <div className="wrapper">
+      <StartPage />
+    </div>
   );
 }
 

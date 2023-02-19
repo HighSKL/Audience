@@ -1,0 +1,194 @@
+@mixin animationDefaultSettings { 
+    animation-fill-mode: both;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgb(31, 31, 35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: startPageTransition;
+    animation-duration: .5s;
+}
+
+.authBlock{
+    @include animationDefaultSettings;
+    width: 30%;
+    height: 0vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    animation-name: startMenuBlock;
+    animation-duration: 1s;
+    z-index: 1;
+}
+
+.header_text{
+    @include animationDefaultSettings;
+    color: white;
+    text-align: center;
+    font-family: "Floripa";
+    font-size: 3em;
+    animation-name: headerTextStartAnimation;
+    animation-duration: 0.9s;
+}
+
+.linesContainer{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top:0;
+    left: 0;
+    opacity: 15%;
+}
+
+.runing_line{
+    position: relative;
+    color: white;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    font-family: "Floripa";
+    margin-top: -.3%;
+    margin-bottom: -1%;
+    display: flex;
+    p{
+        margin-left: 1%;
+        font-size: 100%;
+    }
+}
+
+.rl_left{
+    animation-duration: 80s;
+    opacity: 90%;
+    animation-name: run_line_left;
+}
+
+.rl_right{
+    animation-duration: 60s;
+    opacity: 40%;
+    animation-name: run_line_right;
+}
+
+.container{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.form_block{
+    width: 0%;
+    height: 30vh;
+    overflow: hidden;
+    margin-left: 10%;
+    margin-top: 5vh;
+    @include animationDefaultSettings;
+    animation-name: formShowAnimation;
+    animation-duration: 1s;
+    opacity: 0;
+    display: flex;
+    .text{
+        white-space: nowrap;
+        color: white;
+        text-align: left;
+    }
+    animation-delay: .3s;
+}
+
+.text_container{
+    width: 100%;
+    float: left;
+    margin-top: -4%;
+}
+
+.login_input, .password_input{
+    float: left;
+    width: 95%;
+    font-size: 150%;
+    color: white;
+    outline: none;
+    margin-bottom: 2vh;
+    background-color: rgb(51, 51, 51);
+    border: none;
+    transition: .5s ease;
+    border-bottom: 1px solid rgb(56, 56, 56);
+    font-family: Stem;
+    font-weight: 600;
+    padding-left: 3%;
+    padding-right: 3%;
+    &:focus{
+        border-bottom: 1px solid white;
+    }
+}
+.rememberMe_container{
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 2vh;
+    float: left;
+    .rememberMe_checkbox{
+        height: 2vh;
+        margin-top: 1%;
+    }
+    p{
+        color: rgba(255, 255, 255, 0.828);
+        text-align: left;
+        margin-left: 3%;
+        font-size: 90%;
+        white-space: nowrap;
+    }
+}
+
+
+
+@keyframes run_line_left{
+    from{
+        left: -60%;
+    }
+    to{
+        left: -5%;
+    }
+}
+
+@keyframes run_line_right {
+    from{
+        left: -5%;
+    }
+    to{
+        left: -60%;
+    }
+}
+
+
+
+@keyframes headerTextStartAnimation {
+    to{
+        font-size: 1.7em;
+        margin-top: 20%;
+    }
+}
+@keyframes startMenuBlock {
+    to{
+        height: 80vh;
+        display: none;
+    }
+}
+
+@keyframes startPageTransition {
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
+
+@keyframes formShowAnimation {
+    to{
+        width: 80%;
+        opacity: 100%;
+    }
+}
