@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import StartPage from './Components/StartPage/StartPage';
+import AuthPage from './Components/AuthPage/AuthPage';
+import ProfilePage from './Components/ProfilePage/ProfilePage';
+import Redirect from './Components/Redirect/Redirect';
 
-const App: React.FC = () => {
+type PropsType = {
+  state: object
+}
+
+const App: React.FC<PropsType> = () => {
+
+  const navigation = useNavigate()
+
+  useEffect(()=>{
+    navigation('/auth')
+  }, [])
+
   return (
     <div className="wrapper">
-      <StartPage />
+      {/* <Redirect/> */}
+      <Routes>
+        <Route path='/auth' element={<AuthPage/>}/>
+        <Route path='/profile' element={<ProfilePage />}/>
+      </Routes>
     </div>
   );
 }
