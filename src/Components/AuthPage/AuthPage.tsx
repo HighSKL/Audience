@@ -6,21 +6,20 @@ import { useNavigate } from "react-router-dom";
 import { AppStateType } from '../../Redux/store';
 import { connect } from 'react-redux';
 import { setUser, authUserThunk } from '../../Redux/reducers/authReducer';
-import { UserDataType } from '../../Types/types';
 import Cookies from 'js-cookie';
+
 const AuthPage = (props: any) => {
     
     const navigation = useNavigate(); 
 
-    useEffect(()=>{
-        console.log(Cookies.get('authUser'))
-        if (Cookies.get('authUser') != undefined){
-            let cookieValue = Cookies.get('authUser')?.toString()
-            let userData = cookieValue != undefined ? JSON.parse(cookieValue) : null
-            setUser(userData);
-            navigation('/profile')
-        }
-    }, [])
+    // useEffect(()=>{
+    //     if (Cookies.get('authUser') != undefined){
+    //         let cookieValue = Cookies.get('authUser')?.toString()
+    //         let userData = cookieValue != undefined ? JSON.parse(cookieValue) : null
+    //         setUser(userData);
+    //         navigation('/profile')
+    //     }
+    // }, [])
 
     const linesRender: () => JSX.Element = (title: string = "AUDIENCE") => (
         <>
@@ -31,7 +30,7 @@ const AuthPage = (props: any) => {
         </>
     )
     return (
-        <div className="wrapper">
+        <div className="auth_wrapper">
             <div className="linesContainer">
                 {linesRender()}
                 {linesRender()}
